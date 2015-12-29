@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function report_form_schema() {
+
+ // $schema = array();
+
+  $schema['report_form'] = array(
+    'description' => 'The base table for the report entity',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key of the ',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+	  	'nid' => array(
+	   	'type' => 'int',
+        'description' => 'node is of node',
+        'not null' => FALSE,
+      ),
+     	'user_name' => array(
+	  	'type' => 'varchar',
+        'description' => 'User name.',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+	  'title' => array(
+       	'description' => 'Report name.',
+		'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+	  'amount' => array(
+	 	'type' => 'int',
+        'description' => 'Project amount',
+        'default' => 0,
+        'not null' => FALSE,
+      ),
+      'cover_letter' => array(
+        'type' => 'text',
+		'description' => 'Project cover letter.',
+        'size' => 'big',
+        'not null' => FALSE,
+        'default' => NULL
+      ),
+	   'uid' => array(
+        'type' => 'int',
+		'description' => 'User ID',
+        'default' => 0,
+        'not null' => FALSE,
+      ),
+	  'fid' => array(
+        'type' => 'int',
+		'description' => 'image id',
+ 		'default' => 0,
+        'not null' => FALSE,
+      ),
+   	  ),
+   	'foreign keys' => array(
+   		'table' => 'node',
+	 	'columns' => array('nid' => 'nid'),
+		'table' => 'users',
+	 	'columns' => array('uid' => 'uid'),
+		'table' => 'file_managed',
+	 	'columns' => array('fid' => 'fid'),
+   	),
+       	
+    
+    	'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+
