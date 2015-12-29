@@ -1,0 +1,12 @@
+name = Report_form
+description = Reporting Form working with bootstrap 
+package = Reporting
+core=7.x 
+dependencies[] = data 
+dependencies[] = views
+dependencies[] = jquery_update
+files[] = report_form.module 
+files[] =report_form.install
+configure = admin/config/system/report_form
+version = "7.x-1.0"
+
